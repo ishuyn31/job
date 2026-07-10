@@ -7,11 +7,10 @@ def search_incruit(keyword, page=1):
     jobs = []
 
     for i in range(page):
-        page = 30 * (i)
+        page = 30 * i
         url = f"https://search.incruit.com/list/search.asp?col=job&kw={keyword}&startno={page}"
         r = requests.get(url)
         # print(r.text) // html코드를 들고옴
-
         soup = BeautifulSoup(r.text, "html.parser")
         lis = soup.find_all("li", class_ = "c_col")
 
